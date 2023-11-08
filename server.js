@@ -54,8 +54,8 @@ app.post("/signup", signup.post); // signup page, backend
 const signin = require("./public/signin/exports");
 app.get("/signin", signin.get); // signin page
 app.post("/signin", signin.post); // signin page, backend
-
-app.get("/signout"); // signout page
+const signout = require("./public/signout/exports");
+app.get("/signout", signout); // signout page
 
 // API
 app.post("/api/userExists", api.userExists);
