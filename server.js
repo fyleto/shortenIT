@@ -38,8 +38,10 @@ mongoose
 app.get("/", home.get); // home page
 
 app.get("/user/:id"); // user's posts and profile
-app.get("/create", validateSession); // create a post
-app.post("/create"); // create a post,  backend
+
+const create = require("./public/new/exports");
+app.get("/new", validateSession, create.get); // create a post
+app.post("/new", create.post); // create a post,  backend
 
 app.get("/l/:id"); // view a post
 app.post("/l/:id"); // delete a post

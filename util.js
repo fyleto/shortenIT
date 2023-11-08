@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const { nanoid } = require("nanoid");
 
 // Function to generate a salt and hash the password
 async function encryptPassword(password) {
@@ -48,6 +49,17 @@ class TryError {
 
 const maxLinks = 20;
 
+/**
+ *
+ * @param {String} link
+ */
+function linkAndId(link) {
+    const id = nanoid(8);
+    const path = `/${id}}`;
+    const https = link.includes("http") == true ? false : true;
+    return [id, path, https];
+}
+
 module.exports = {
     verifySessionToken,
     TryError,
@@ -55,4 +67,5 @@ module.exports = {
     encryptPassword,
     comparePassword,
     maxLinks,
+    linkAndId,
 };
