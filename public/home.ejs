@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Links!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script defer src="/script.js"></script>
+        <link href="/common.css" rel="stylesheet" type="text/css" />
+        <link href="/style.css" rel="stylesheet" type="text/css" />
+        <!-- This is the default, so no exact link is needed.-->
+    </head>
+    <body>
+        <div>
+            <a class="navA" href="/create">New Post</a>
+            <% if (signedIn) { %>
+            <!-- The user is signed in, so show their links. -->
+            <a class="navA" href="/user/<%=userId%>">Your Links</a>
+            <% } else { %>
+            <!-- The user ISNT signed in, so show sigin links.-->
+            <a class="navA" href="/signin">Signin</a>
+            <% } %>
+            <a class="navA" href="/tos">ToS</a>
+        </div>
+        <main>
+            <h1 id="title">PostIT</h1>
+            <p>Got an idea, problem or just bored? PostIT then tf?</p>
+            <h1>Discover</h1>
+        </main>
+    </body>
+</html>
