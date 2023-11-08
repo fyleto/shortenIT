@@ -1,12 +1,15 @@
-const User = require("../../userSchema");
-const { generateToken, TryError } = require("../../util");
-const path = require("path");
+import { User } from "../../userSchema.js";
+import { generateToken, TryError } from "../../util.js";
+import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
-const get = (req, res) => {
+const __dirname = dirname(fileURLToPath(import.meta.url));
+export const get = (req, res) => {
     res.sendFile(path.join(__dirname + "/page.html"));
 };
 
-const post = async (req, res) => {
+export const post = async (req, res) => {
     try {
         const username = req.body.username;
         const sessiontoken = generateToken();
@@ -27,5 +30,3 @@ const post = async (req, res) => {
         throw new TryError(res, error);
     }
 };
-
-module.exports = { get, post };

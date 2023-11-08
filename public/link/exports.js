@@ -1,19 +1,16 @@
-const Link = require("../../linkSchema");
-var url = require("url");
-const { TryError } = require("../../util");
+import { Link } from "../../linkSchema.js";
+import { TryError } from "../../util.js";
 
-const get = (req, res) => {
+export const get = async (req, res) => {
     try {
         const id = req.params.id;
-        const link = Link.findOne({ id });
+        const link = await Link.findOne({ id });
 
         if (!link) return res.status(404);
         let redirect = link.path;
 
         return res.status(200).redirect(redirect);
     } catch (err) {
-        throw new TryError(res, error);
+        throw new TryError(res, err);
     }
 };
-
-module.exports = { get };

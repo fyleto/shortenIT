@@ -1,17 +1,36 @@
 {
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.2",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "helmet": "^7.1.0",
-    "mongoose": "^8.0.0",
-    "morgan": "^1.10.0",
-    "nanoid": "^5.0.3",
-    "path": "^0.12.7",
-    "url": "^0.11.3"
-  }
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "body-parser": "^1.20.2",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "helmet": "^7.1.0",
+        "mongoose": "^8.0.0",
+        "morgan": "^1.10.0",
+        "nanoid": "^5.0.3",
+        "path": "^0.12.7",
+        "url": "^0.11.3"
+    },
+    "scripts": {
+        "start": "nodemon server.js"
+    },
+    "name": "shortenit",
+    "description": "shot",
+    "type": "module",
+    "version": "1.0.0",
+    "main": "server.js",
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fyleto/shortenIT.git"
+    },
+    "author": "fyleto",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/fyleto/shortenIT/issues"
+    },
+    "homepage": "https://github.com/fyleto/shortenIT#readme"
 }

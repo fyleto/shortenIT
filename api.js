@@ -1,7 +1,7 @@
-const User = require("./userSchema.js");
-const { comparePassword } = require("./util.js");
+import { User } from "./userSchema.js";
+import { comparePassword } from "./util.js";
 
-const userExists = async (req, res) => {
+export const userExists = async (req, res) => {
     try {
         const username = req.body.username;
         const query = { username };
@@ -16,7 +16,7 @@ const userExists = async (req, res) => {
     }
 };
 
-const correctPassword = async (req, res) => {
+export const correctPassword = async (req, res) => {
     try {
         const username = req.body.username;
         const password = req.body.password;
@@ -38,5 +38,3 @@ const correctPassword = async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 };
-
-module.exports = { userExists, correctPassword };

@@ -1,8 +1,8 @@
-const bcrypt = require("bcrypt");
-const { nanoid } = require("nanoid");
+import * as bcrypt from "bcrypt";
+import { nanoid } from "nanoid";
 
 // Function to generate a salt and hash the password
-async function encryptPassword(password) {
+export async function encryptPassword(password) {
     const saltRounds = 10; // Number of salt rounds for bcrypt to use
     const salt = await bcrypt.genSalt(saltRounds);
     const hash = await bcrypt.hash(password, salt);
@@ -10,18 +10,18 @@ async function encryptPassword(password) {
 }
 
 // Function to compare a password with its encrypted counterpart
-async function comparePassword(password, encryptedPassword) {
+export async function comparePassword(password, encryptedPassword) {
     return await bcrypt.compare(password, encryptedPassword);
 }
 
-function verifySessionToken(cookieSessionToken, databaseSessionToken) {
+export function verifySessionToken(cookieSessionToken, databaseSessionToken) {
     return databaseSessionToken.getTime() !==
         new Date(parseInt(cookieSessionToken)).getTime()
         ? false
         : true;
 }
 
-function generateToken() {
+export function generateToken() {
     // Get the current date in milliseconds
     const currentDate = new Date();
     const currentDateMs = currentDate.getTime();
@@ -40,26 +40,26 @@ function generateToken() {
     return futureDate.setMilliseconds(0);
 }
 
-class TryError {
+export class TryError {
     constructor(res, err) {
         console.log(err);
         return res.status(500).send("An Internal server Error ocurred!");
     }
 }
 
-const maxLinks = 20;
+export const maxLinks = 20;
 
 /**
  *
  * @param {String} link
  */
-function linkAndId(link) {
+export function linkAndId(link) {
     const id = nanoid(8);
-    const path = `/${id}}`;
-    const https = link.includes("http") == true ? false : true;
+    const path = link;
+    const https = link.includes("https") == true ? true : false;
     return [id, path, https];
 }
-
+/*
 module.exports = {
     verifySessionToken,
     TryError,
@@ -69,3 +69,4 @@ module.exports = {
     maxLinks,
     linkAndId,
 };
+*/

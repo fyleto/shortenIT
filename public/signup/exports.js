@@ -1,9 +1,12 @@
-const User = require("../../userSchema");
-const path = require("path");
-const { generateToken, encryptPassword, TryError } = require("../../util");
+import { User } from "../../userSchema.js";
+import path from "path";
+import { generateToken, encryptPassword, TryError } from "../../util.js";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 // Route to handle the form submission and create a new post
-const post = async (req, res) => {
+export const post = async (req, res) => {
     try {
         const username = req.body.username;
         const pass = req.body.password;
@@ -30,8 +33,6 @@ const post = async (req, res) => {
     }
 };
 
-const get = (req, res) => {
+export const get = (req, res) => {
     res.sendFile(path.join(__dirname + "/page.html"));
 };
-
-module.exports = { post, get };

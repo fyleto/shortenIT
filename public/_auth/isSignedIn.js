@@ -1,10 +1,10 @@
-const User = require("../../userSchema");
-const { verifySessionToken } = require("../../util");
+import { User } from "../../userSchema.js";
+import { verifySessionToken } from "../../util.js";
 
 /**
  * validates if signed in when accessing a part of the site that needs it.
  */
-const validateSession = async (req, res, next) => {
+export async function validateSession(req, res, next) {
     const sessionToken = req.cookies.sessionToken;
     const userCookie = req.cookies.user;
     const parsedUserCookie =
@@ -51,12 +51,12 @@ const validateSession = async (req, res, next) => {
     }
 
     next();
-};
+}
 
 /**
  * Friendlier version to add/remove sign in/up buttons in ejs
  */
-const validateSessionFriendly = async (req) => {
+export async function validateSessionFriendly(req) {
     try {
         const userCookies = req.cookies.user;
         return {
@@ -71,12 +71,12 @@ const validateSessionFriendly = async (req) => {
     } catch (error) {
         console.log(error);
     }
-};
+}
 
 /**
  * Check if user is author in user path
  */
-const isAuthor = async (req, id) => {
+export async function isAuthor(req, id) {
     try {
         const { userId } = await validateSessionFriendly(req);
         if (!userId) {
@@ -87,6 +87,4 @@ const isAuthor = async (req, id) => {
     } catch (error) {
         console.log(error);
     }
-};
-
-module.exports = { validateSession, validateSessionFriendly, isAuthor };
+}

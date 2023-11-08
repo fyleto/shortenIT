@@ -1,9 +1,10 @@
-const mongoose = require("mongoose");
+import * as mongoose from "mongoose";
+
 const linkSchema = new mongoose.Schema({
     id: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     authorId: {
         type: String,
@@ -19,4 +20,4 @@ const linkSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model("link", linkSchema);
+export const Link = mongoose.model("link", linkSchema);
