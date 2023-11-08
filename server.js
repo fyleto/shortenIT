@@ -11,7 +11,6 @@ const port = 3000;
 const cookieParser = require("cookie-parser");
 const app = express();
 
-const signout = require("./public/signout/exports.js");
 const { validateSession } = require("./public/_auth/isSignedIn");
 
 app.use(bodyParser.json());
@@ -49,8 +48,9 @@ app.post("/l/:id/edit"); // edit a post, backend
 
 app.get("/tos", tos); // ToS
 
-app.get("/signup"); // signup page
-app.post("/signup"); // signup page, backend
+const signup = require("./public/signup/exports");
+app.get("/signup", signup.get); // signup page
+app.post("/signup", signup.post); // signup page, backend
 app.get("/signin"); // signin page
 app.post("/signin"); // signin page, backend
 

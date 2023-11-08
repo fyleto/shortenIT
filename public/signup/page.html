@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>shortenIT - signup</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="/common.css" rel="stylesheet" type="text/css" />
+        <script defer src="./script.js"></script>
+    </head>
+    <body>
+        <main>
+            <h1>Sign up!</h1>
+            <form action="/signup" method="POST">
+                <label for="username">Username:</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    required
+                /><br />
+                <div id="usernameError" style="color: red"></div>
+                <br /><br />
+
+                <label for="password">Password:</label>
+                <input
+                    type="text"
+                    id="password"
+                    name="password"
+                    required
+                /><br />
+
+                <div id="passwordError" style="color: red"></div>
+                <br />
+                <br /><br />
+                <input type="submit" value="Create Post" />
+            </form>
+            <p>
+                By signing up you agree to
+                <a href="/tos">shortenIT Terms Of Service</a>
+            </p>
+        </main>
+
+        <script src="/script.js"></script>
+    </body>
+</html>
