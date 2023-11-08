@@ -46,10 +46,13 @@ class TryError {
     }
 }
 
+const maxLinks = 20;
+
 module.exports = {
     verifySessionToken,
     TryError,
     generateToken,
     encryptPassword,
     comparePassword,
+    maxLinks,
 };

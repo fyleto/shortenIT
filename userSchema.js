@@ -22,6 +22,13 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
+    links: {
+        amountUsed: {
+            type: Number,
+            default: 0,
+        }, // max = 20
+        ids: [{ type: String }],
+    },
 });
 
 module.exports = mongoose.model("user", userSchema);
