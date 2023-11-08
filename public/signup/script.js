@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ id: id }),
+            body: JSON.stringify({ username: username }),
         });
 
         const userExistsData = await userExistsResponse.json();
