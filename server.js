@@ -51,8 +51,9 @@ app.get("/tos", tos); // ToS
 const signup = require("./public/signup/exports");
 app.get("/signup", signup.get); // signup page
 app.post("/signup", signup.post); // signup page, backend
-app.get("/signin"); // signin page
-app.post("/signin"); // signin page, backend
+const signin = require("./public/signin/exports");
+app.get("/signin", signin.get); // signin page
+app.post("/signin", signin.post); // signin page, backend
 
 app.get("/signout"); // signout page
 
