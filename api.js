@@ -23,14 +23,11 @@ export const correctPassword = async (req, res) => {
         const query = { username };
         let user = await User.findOne(query);
 
-        if (!user) return res.status(404).send({ error: "user not found." });
+        if (!user) { console.log("does not exist."); return res.status(404).send({ error: "user not found." }); }
 
         let status = await comparePassword(password, user.password.encrypted);
         let response;
         response = { correct: !status ? false : true };
-        console.log(response);
-        console.log(id);
-        console.log(password);
 
         res.status(200).send(response);
     } catch (error) {

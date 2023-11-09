@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const get = (req, res) => {
+    // this shit doesnt clear shit
     return res.status(200).sendFile(RealPath.join(__dirname + "/page.html"));
 };
 

@@ -15,7 +15,7 @@
         "url": "^0.11.3"
     },
     "scripts": {
-        "start": "nodemon server.js"
+        "start": "node server.js"
     },
     "name": "shortenit",
     "description": "shot",

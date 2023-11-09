@@ -14,9 +14,8 @@ export async function validateSession(req, res, next) {
         // no cookie is saved.
         return res.redirect("/signin");
     }
-
-    let query = { id: parsedUserCookie["_doc"].id };
-    const user = await User.findOne(query);
+    
+    const user = await User.findById(parsedUserCookie._doc._id);
 
     if (!user) {
         // user doesnt ecxist in db
@@ -28,7 +27,7 @@ export async function validateSession(req, res, next) {
     }
 
     if (
-        user.password.encrypted !== parsedUserCookie["_doc"].password.encrypted
+        user.password.encrypted !== parsedUserCookie._doc.password.encrypted
     ) {
         // password has been changed, so clear cookies and redirect to /signin.
         // Either the password has been changed or the cookie has been tampered with.
@@ -63,7 +62,7 @@ export async function validateSessionFriendly(req) {
             output: !userCookies ? false : true,
             userId: !userCookies
                 ? undefined
-                : JSON.parse(userCookies)["_doc"].id,
+                : JSON.parse(userCookies)["_doc"]._id,
             username: !userCookies
                 ? undefined
                 : JSON.parse(userCookies)["_doc"].username,
